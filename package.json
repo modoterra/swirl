@@ -1,0 +1,40 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "ui": "shadcn"
+  },
+  "devDependencies": {
+    "@prettier/plugin-php": "^0.22.2",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "autoprefixer": "^10.4.20",
+    "axios": "^1.7.4",
+    "concurrently": "^9.0.1",
+    "laravel-vite-plugin": "^1.0",
+    "postcss": "^8.4.49",
+    "prettier-plugin-blade": "^2.1.19",
+    "prettier-plugin-tailwindcss": "^0.6.8",
+    "shadcn": "^2.1.6",
+    "tailwindcss": "^3.4.15",
+    "vite": "^5.0"
+  },
+  "dependencies": {
+    "@inertiajs/react": "^1.2.0",
+    "@radix-ui/react-icons": "^1.3.1",
+    "@radix-ui/react-separator": "^1.1.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-tooltip": "^1.1.4",
+    "@uidotdev/usehooks": "^2.4.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.454.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.5.4",
+    "tailwindcss-animate": "^1.0.7"
+  }
+}
