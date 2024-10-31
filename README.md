@@ -1,6 +1,6 @@
-# Welcome to Swirl 
+# Welcome to SWIRL 
 
-The SWIRL stack consists of shadcn/ui, Tailwind, React, Laravel & and a couple of friends. The purpose of this project is to create an opinionated starter for creating applications that have robust fundamentals and modern capabilities.
+The SWIRL stack consists of shadcn/ui, Tailwind, Inertia, React, Laravel & and a couple of friends. The purpose of this project is to create an opinionated starter for applications that have robust fundamentals and modern capabilities.
 
 ## Introduction
 
@@ -9,11 +9,14 @@ The SWIRL stack consists of shadcn/ui, Tailwind, React, Laravel & and a couple o
 - **shadcn/ui**: A collection of UI components that are designed to be highly customizable and easy to integrate into your projects.
 - **Tailwind CSS**: A utility-first CSS framework that allows you to build custom designs directly in your markup.
 - **React**: A JavaScript library for building user interfaces, particularly single-page applications where you need a fast and interactive user experience.
+- **Inertia**: A framework that allows you to create modern single-page applications using classic server-side routing and controllers.
 - **Laravel**: A PHP framework for web artisans, providing an elegant syntax and a robust set of tools for building modern web applications.
 
 ## Installation
 
-__To be added__
+```sh
+sh -c "$(curl -fsSL https://swirl.mdtrr.com/install)"
+```
 
 ## License
 

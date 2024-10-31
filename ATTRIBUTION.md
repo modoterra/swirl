@@ -5,6 +5,9 @@ This project uses the following open-source components, each under its own licen
 - **Laravel** - Licensed under the MIT License.  
   [Source](https://github.com/laravel/laravel)
 
+  - **Inertia.js** - Licensed under the MIT License.  
+    [Source](https://github.com/inertiajs/inertia)
+
 - **React** - Licensed under the MIT License.  
   [Source](https://github.com/facebook/react)
 

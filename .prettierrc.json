@@ -1,0 +1,44 @@
+{
+  "arrowParens": "avoid",
+  "bracketSameLine": false,
+  "bracketSpacing": true,
+  "importOrder": [
+    "^@/(.*)$",
+    "^@(.*)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "trailingCommaPHP": false,
+  "overrides": [
+    {
+      "files": [
+        "*.php"
+      ],
+      "options": {
+        "parser": "php"
+      }
+    },
+    {
+      "files": [
+        "*.blade.php"
+      ],
+      "options": {
+        "parser": "blade"
+      }
+    }
+  ],
+  "plugins": [
+    "@trivago/prettier-plugin-sort-imports",
+    "prettier-plugin-blade",
+    "prettier-plugin-tailwindcss",
+    "@prettier/plugin-php"
+  ],
+  "quoteProps": "consistent",
+  "semi": false,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "none",
+  "useTabs": false,
+  "printWidth": 120
+}
