@@ -110,21 +110,27 @@ show_help() {
     echo ""
     echo "Options:"
     echo "  -f, --force      Force overwrite if the directory already exists"
-    echo "  -b, --bare       Install without additional dependencies"
+    echo "  -d, --dry        Install without additional dependencies"
     echo "  -v, --verbose    Enable verbose output"
+    echo "  -u, --url        Custom URL for the git repository"
+    echo "  -b, --branch     Custom branch for the git repository"
     echo "  -h, --help       Display this help message"
 }
 
 # Parse command line arguments
 FORCE=0
-BARE=0
+DRY=0
 VERBOSE=0
+REPO_URL="https://github.com/modoterra/swirl.git"
+BRANCH="stable"
 INSTALL_DIR=""
 while [[ "$#" -gt 0 ]]; do
     case $1 in
         -f|--force) FORCE=1 ;;
-        -b|--bare) BARE=1 ;;
+        -d|--dry) DRY=1 ;;
         -v|--verbose) VERBOSE=1 ;;
+        -u|--url) REPO_URL="$2"; shift ;;
+        -b|--branch) BRANCH="$2"; shift ;;
         -h|--help) show_help; exit 0 ;;
         *) INSTALL_DIR="$1" ;;
     esac
@@ -181,12 +187,12 @@ print_new_line
 mkdir -p "$INSTALL_DIR"
 
 # Clone the repository
-print_message info "Cloning the repository..."
+print_message info "Cloning the repository from $REPO_URL (branch: $BRANCH)..."
 print_new_line
-run_command "git clone --depth=1 --branch stable https://github.com/modoterra/swirl.git $INSTALL_DIR"
+run_command "git clone --depth=1 --branch $BRANCH $REPO_URL $INSTALL_DIR"
 run_command "rm -rf $INSTALL_DIR/.git"
 
-if [ $BARE -eq 0 ]; then
+if [ $DRY -eq 0 ]; then
     # Change to the installation directory
     cd "$INSTALL_DIR"
 
@@ -204,6 +210,11 @@ if [ $BARE -eq 0 ]; then
     print_message info "Setting up environment variables..."
     print_new_line
     run_command "cp .env.example .env"
+
+    # Install FrankenPHP
+    print_message info "Installing Octane server..."
+    print_new_line
+    run_command "php artisan octane:install --server frankenphp -n"
 
     # Generate application key
     print_message info "Generating application key..."
