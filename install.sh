@@ -196,6 +196,11 @@ if [ $DRY -eq 0 ]; then
     # Change to the installation directory
     cd "$INSTALL_DIR"
 
+    # Copy .env.example to .env
+    print_message info "Setting up environment variables..."
+    print_new_line
+    run_command "cp .env.example .env"
+
     # Install composer dependencies
     print_message info "Installing composer dependencies..."
     print_new_line
@@ -205,11 +210,6 @@ if [ $DRY -eq 0 ]; then
     print_message info "Installing npm dependencies..."
     print_new_line
     run_command "npm install"
-
-    # Copy .env.example to .env
-    print_message info "Setting up environment variables..."
-    print_new_line
-    run_command "cp .env.example .env"
 
     # Install FrankenPHP
     print_message info "Installing Octane server..."
