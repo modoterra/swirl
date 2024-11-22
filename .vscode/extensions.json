@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "bmewburn.vscode-intelephense-client",
+    "csstools.postcss",
+    "onecentlin.laravel-blade",
+    "bradlc.vscode-tailwindcss",
+    "stivo.tailwind-fold",
+    "liamhammett.temphpest"
+  ]
+}
