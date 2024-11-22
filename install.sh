@@ -14,11 +14,11 @@ run_command() {
     if [ $VERBOSE -eq 1 ]; then
         print_message muted "Running: $cmd"
         print_new_line
-        $cmd
+        eval "$cmd"
         status=$?
     else
         output=$(mktemp)
-        $cmd &> "$output" &
+        eval "$cmd" &> "$output" &
 
         local pid=$!
         local delay=0.1
@@ -109,11 +109,12 @@ show_help() {
     echo "Usage: ./install.sh [options] [directory]"
     echo ""
     echo "Options:"
-    echo "  -f, --force      Force overwrite if the directory already exists"
+    echo "  -f, --force      Force installation if the directory already exists"
     echo "  -d, --dry        Install without additional dependencies"
     echo "  -v, --verbose    Enable verbose output"
-    echo "  -u, --url        Custom URL for the git repository"
-    echo "  -b, --branch     Custom branch for the git repository"
+    echo "  -u, --url        Specify URL for the source Git repository"
+    echo "  -b, --branch     Specify branch for the source Git repository"
+    echo "  --no-git         Skip Git repository initialization"
     echo "  -h, --help       Display this help message"
 }
 
@@ -121,6 +122,7 @@ show_help() {
 FORCE=0
 DRY=0
 VERBOSE=0
+NO_GIT=0
 REPO_URL="https://github.com/modoterra/swirl.git"
 BRANCH="stable"
 INSTALL_DIR=""
@@ -132,6 +134,7 @@ while [[ "$#" -gt 0 ]]; do
         -u|--url) REPO_URL="$2"; shift ;;
         -b|--branch) BRANCH="$2"; shift ;;
         -h|--help) show_help; exit 0 ;;
+        --no-git) NO_GIT=1 ;;
         *) INSTALL_DIR="$1" ;;
     esac
     shift
@@ -172,7 +175,7 @@ if [ -d "$INSTALL_DIR" ]; then
     if [ $FORCE -eq 1 ]; then
         print_message warning "Directory $INSTALL_DIR already exists. Overwriting..."
         print_new_line
-        rm -rf "$INSTALL_DIR"
+        run_command "rm -rf $INSTALL_DIR"
     else
         print_message error "Directory $INSTALL_DIR already exists."
         print_new_line
@@ -220,6 +223,14 @@ if [ $DRY -eq 0 ]; then
     print_message info "Generating application key..."
     print_new_line
     run_command "php artisan key:generate"
+fi
+
+if [ $NO_GIT -eq 0 ]; then
+    print_message info "Initializing a new git repository..."
+    print_new_line
+    run_command "git init"
+    run_command "git add ."
+    run_command "git commit -m 'feat: initial commit'"
 fi
 
 print_message success "Installation complete. Use \"cd $INSTALL_DIR\" to enter the directory and open the README.md to get started or go to https://swirl.mdtrr.com."
