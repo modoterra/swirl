@@ -25,14 +25,12 @@ run_command() {
         local spinner='⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏'
         local i=0
 
-        tput civis
         while kill -0 "$pid" 2>/dev/null; do
             i=$(( (i+1) % ${#spinner} ))
             printf "\r%s" "${spinner:$i:1}"
             sleep $delay
         done
         printf "\r\033[K"
-        tput cnorm
 
         if wait "$pid"; then
             status=0
@@ -104,37 +102,56 @@ prompt_string() {
     echo "$response"
 }
 
+clean() {
+    rm "./install.sh"
+    rm "./LICENSE.md"
+    rm "./SECURITY.md"
+    rm "./ATTRIBUTION.md"
+    mv "./swirl.code-workspace" "./app.code-workspace"
+    sed -i '' 's/<title>SWIRL<\/title>/<title>Hello World<\/title>/' "./resources/views/app.blade.php"
+    echo "# README\n\nInclude all the important information about about the project here." > "./README.md"
+    echo "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\nThe format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).\n" > "./CHANGELOG.md"
+    echo "import { FC } from 'react'\n\nconst Welcome: FC = () => {\n  return (\n    <div>\n      <h1>Hello World</h1>\n    </div>\n  )\n}\n\nexport default Welcome" > "./resources/js/pages/Welcome.tsx"
+}
+
 # Function to display help message
 show_help() {
     echo "Usage: ./install.sh [options] [directory]"
     echo ""
     echo "Options:"
     echo "  -f, --force      Force installation if the directory already exists"
-    echo "  -d, --dry        Install without additional dependencies"
+    echo "  --no-deps        Install without additional dependencies"
     echo "  -v, --verbose    Enable verbose output"
     echo "  -u, --url        Specify URL for the source Git repository"
     echo "  -b, --branch     Specify branch for the source Git repository"
     echo "  --no-git         Skip Git repository initialization"
+    echo "  -c, --clean      Install without any of the swirl things left behind"
+    echo "  --no-interaction Run without user prompts"
     echo "  -h, --help       Display this help message"
 }
 
 # Parse command line arguments
 FORCE=0
-DRY=0
+NO_DEPS=0
 VERBOSE=0
 NO_GIT=0
+CLEAN=0
+NO_INTERACTION=0
 REPO_URL="https://github.com/modoterra/swirl.git"
 BRANCH="stable"
 INSTALL_DIR=""
+
 while [[ "$#" -gt 0 ]]; do
     case $1 in
         -f|--force) FORCE=1 ;;
-        -d|--dry) DRY=1 ;;
+        --no-deps) NO_DEPS=1 ;;
         -v|--verbose) VERBOSE=1 ;;
         -u|--url) REPO_URL="$2"; shift ;;
         -b|--branch) BRANCH="$2"; shift ;;
         -h|--help) show_help; exit 0 ;;
         --no-git) NO_GIT=1 ;;
+        -c|--clean) CLEAN=1 ;;
+        --no-interaction) NO_INTERACTION=1 ;;
         *) INSTALL_DIR="$1" ;;
     esac
     shift
@@ -145,13 +162,14 @@ print_message welcome "Welcome to SWIRL. Let us begin your installation."
 print_new_line
 
 # Check if the user is ready to begin the installation
-
-print_message prompt "Are you ready to begin the installation?"
-print_message muted " → (y/n) "
-if ! prompt_yes_no "y"; then
-    print_message info "Installation aborted."
-    print_new_line
-    exit 0
+if [ $NO_INTERACTION -eq 0 ]; then
+    print_message prompt "Are you ready to begin the installation?"
+    print_message muted " → (y/n) "
+    if ! prompt_yes_no "y"; then
+        print_message info "Installation aborted."
+        print_new_line
+        exit 0
+    fi
 fi
 
 # Check for required commands
@@ -165,9 +183,15 @@ done
 
 # Prompt the user for the installation directory if not provided
 if [ -z "$INSTALL_DIR" ]; then
-    print_message prompt "Where should we install SWIRL?"
-    print_message muted " → "
-    INSTALL_DIR=$(prompt_string "")
+    if [ $NO_INTERACTION -eq 1 ]; then
+        print_message error "Installation directory not specified."
+        print_new_line
+        exit 1
+    else
+        print_message prompt "Where should we install SWIRL?"
+        print_message muted " → "
+        INSTALL_DIR=$(prompt_string "")
+    fi
 fi
 
 # Check if the directory already exists
@@ -183,6 +207,8 @@ if [ -d "$INSTALL_DIR" ]; then
     fi
 fi
 
+tput civis
+
 print_message "info" "Installing SWIRL in \"$INSTALL_DIR\"..."
 print_new_line
 
@@ -193,11 +219,12 @@ mkdir -p "$INSTALL_DIR"
 print_message info "Cloning the repository from $REPO_URL (branch: $BRANCH)..."
 print_new_line
 run_command "git clone --depth=1 --branch $BRANCH $REPO_URL $INSTALL_DIR"
-run_command "rm -rf $INSTALL_DIR/.git"
+run_command "rm -rf ./$INSTALL_DIR/.git"
 
-if [ $DRY -eq 0 ]; then
-    # Change to the installation directory
-    cd "$INSTALL_DIR"
+# Change to the installation directory
+cd "$INSTALL_DIR"
+
+if [ $NO_DEPS -eq 0 ]; then
 
     # Copy .env.example to .env
     print_message info "Setting up environment variables..."
@@ -233,7 +260,15 @@ if [ $NO_GIT -eq 0 ]; then
     run_command "git commit -m 'feat: initial commit'"
 fi
 
+if [ $CLEAN -eq 1 ]; then
+    print_message info "Removing all traces of SWIRL..."
+    print_new_line
+    run_command "clean"
+fi
+
 print_message success "Installation complete. Use \"cd $INSTALL_DIR\" to enter the directory and open the README.md to get started or go to https://swirl.mdtrr.com."
 print_new_line
+
+tput cnorm
 
 exit 0
