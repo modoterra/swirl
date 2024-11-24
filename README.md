@@ -32,6 +32,10 @@ SWIRL includes a Prettier configuration and multiple Prettier plugins for PHP, t
 
 All notable changes to this project will be documented in the [CHANGELOG.md](./CHANGELOG.md) file.
 
+## Contribution
+
+We welcome contributions from the community! Please read our [CONTRIBUTING.md](./CONTRIBUTING.md) file for guidelines on how to get started.
+
 ## License
 
 The original code in this repository is licensed under the MIT License © 2024 Modoterra Corporation. See the [LICENSE.md](./LICENSE.md) file for details.
