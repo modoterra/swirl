@@ -119,15 +119,15 @@ show_help() {
     echo "Usage: ./install.sh [options] [directory]"
     echo ""
     echo "Options:"
-    echo "  -f, --force      Force installation if the directory already exists"
     echo "  --no-deps        Install without additional dependencies"
-    echo "  -v, --verbose    Enable verbose output"
-    echo "  -u, --url        Specify URL for the source Git repository"
-    echo "  -b, --branch     Specify branch for the source Git repository"
     echo "  --no-git         Skip Git repository initialization"
-    echo "  -c, --clean      Install without any of the swirl things left behind"
     echo "  --no-interaction Run without user prompts"
+    echo "  -b, --branch     Specify branch for the source Git repository"
+    echo "  -c, --clean      Install without any of the swirl things left behind"
+    echo "  -f, --force      Force installation if the directory already exists"
     echo "  -h, --help       Display this help message"
+    echo "  -u, --url        Specify URL for the source Git repository"
+    echo "  -v, --verbose    Enable verbose output"
 }
 
 # Parse command line arguments
