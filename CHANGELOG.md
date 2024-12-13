@@ -6,9 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## Unreleased
 
+## 2.0.0
+
 ### Added
 
 - Added missing text for Code of Conduct.
+
+### Changed
+
+- React is now on version 19.
+- Inertia is on version 2. This includes breaking changes. Please refer to https://inertiajs.com/upgrade-guide for more information.
 
 ## [1.1.0] - 2024-11-24
 
