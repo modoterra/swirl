@@ -1,6 +1,6 @@
-# Contributing to SWIRL
+# Contributing to Swirl
 
-Thank you for considering contributing to SWIRL! We welcome contributions from everyone. Below are some guidelines to help you get started.
+Thank you for considering contributing to Swirl! We welcome contributions from everyone. Below are some guidelines to help you get started.
 
 ## How to Contribute
 
@@ -60,4 +60,4 @@ If you find a bug or have a feature request, please create an issue on GitHub. P
 
 If you need help, feel free to reach out by creating an issue or joining our community discussions.
 
-Thank you for contributing to SWIRL!
+Thank you for contributing to Swirl!

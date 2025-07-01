@@ -11,4 +11,4 @@ The table below outlines the versions that are currently supported and when we e
 
 ## Reporting a Vulnerability
 
-If you have discovered a vulnerability in the original source code of SWIRL, please email secops@modoterra.xyz outlining the vulnerability in terms of scope, affected code and steps to reproduce.
+If you have discovered a vulnerability in the original source code of Swirl, please email secops@modoterra.xyz outlining the vulnerability in terms of scope, affected code and steps to reproduce.

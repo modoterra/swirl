@@ -35,8 +35,8 @@ Route::get(
   ])
 )->name('welcome');
 
-/**
- * If you used the CLI snippet to install SWIRL, this is the route that
+/**Swirl
+ * If you used the CLI snippet to install Swirl, this is the route that
  * redirected you to the `install.sh` script on GitHub.
  *
  * A couple of things are going on here. First, we define a get route at

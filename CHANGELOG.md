@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - Many other npm and PHP dependencies updated (see `package.json`, `composer.json`)
 - Updated documentation: ATTRIBUTION.md, CONTRIBUTING.md, README.md.
 - No longer using conventional commits.
+- We now refer to SWIRL as Swirl.
 
 ### Removed
 

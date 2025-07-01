@@ -108,7 +108,7 @@ clean() {
     rm "./SECURITY.md"
     rm "./ATTRIBUTION.md"
     mv "./swirl.code-workspace" "./app.code-workspace"
-    sed -i '' 's/<title>SWIRL<\/title>/<title>Hello World<\/title>/' "./resources/views/app.blade.php"
+    sed -i '' 's/<title>Swirl<\/title>/<title>Hello World<\/title>/' "./resources/views/app.blade.php"
     echo "# README\n\nInclude all the important information about about the project here." > "./README.md"
     echo "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\nThe format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).\n" > "./CHANGELOG.md"
     echo "import { FC } from 'react'\n\nconst Welcome: FC = () => {\n  return (\n    <div>\n      <h1>Hello World</h1>\n    </div>\n  )\n}\n\nexport default Welcome" > "./resources/js/pages/Welcome.tsx"
@@ -188,7 +188,7 @@ if [ -z "$INSTALL_DIR" ]; then
         print_new_line
         exit 1
     else
-        print_message prompt "Where should we install SWIRL?"
+        print_message prompt "Where should we install Swirl?"
         print_message muted " → "
         INSTALL_DIR=$(prompt_string "")
     fi

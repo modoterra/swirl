@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios'
 
 const httpClient = axios.create({
   headers: {
@@ -6,4 +6,4 @@ const httpClient = axios.create({
   }
 })
 
-export default httpClient;
+export default httpClient
