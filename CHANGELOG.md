@@ -6,6 +6,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## Unreleased
 
+### Added
+
+- Updated to latest shadcn components.
+- Added new logo.png to `public/`.
+
+### Changed
+
+- **Major dependency upgrades:**
+  - React upgraded to v19
+  - Inertia upgraded to v2 (breaking changes, see https://inertiajs.com/upgrade-guide)
+  - Many other npm and PHP dependencies updated (see `package.json`, `composer.json`)
+- Updated documentation: ATTRIBUTION.md, CONTRIBUTING.md, README.md.
+- No longer using conventional commits.
+
+### Removed
+
+- Removed unused logo files from `public/logos/` (laravel.svg, shadcn-ui.svg, tailwindcss.svg).
+
 ## 2.0.0
 
 ### Added

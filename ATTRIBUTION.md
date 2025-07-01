@@ -5,16 +5,16 @@ This project uses the following open-source components, each under its own licen
 - **Laravel** - Licensed under the MIT License.  
   [Source](https://github.com/laravel/laravel)
 
-- **Inertia.js** - Licensed under the MIT License.  
+- **Inertia** - Licensed under the MIT License.  
   [Source](https://github.com/inertiajs/inertia)
 
 - **React** - Licensed under the MIT License.  
   [Source](https://github.com/facebook/react)
 
-- **Tailwind CSS** - Licensed under the MIT License.  
+- **Tailwind** - Licensed under the MIT License.  
   [Source](https://github.com/tailwindlabs/tailwindcss)
 
-- **shadcn/ui** - Licensed under the MIT License.  
+- **shadcn** - Licensed under the MIT License.  
   [Source](https://github.com/shadcn-ui/ui)
 
 Each of these components is used in accordance with its license, which can be found at the links provided.

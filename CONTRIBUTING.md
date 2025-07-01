@@ -26,10 +26,10 @@ Implement your feature or fix the bug.
 
 ### Commit your changes
 
-We use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for our commit messages. Please follow this format for your commit messages to ensure consistency and readability.
+Write a clear and descriptive commit message summarizing your changes.
 
 ```bash
-git commit -m "feat: add new feature"
+git commit -m "Add new feature"
 ```
 
 ### Push to your fork

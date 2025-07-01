@@ -158,7 +158,7 @@ while [[ "$#" -gt 0 ]]; do
 done
 
 # Welcome message
-print_message welcome "Welcome to SWIRL. Let us begin your installation."
+print_message welcome "Welcome to Swirl. Let us begin your installation."
 print_new_line
 
 # Check if the user is ready to begin the installation
@@ -209,7 +209,7 @@ fi
 
 tput civis
 
-print_message "info" "Installing SWIRL in \"$INSTALL_DIR\"..."
+print_message "info" "Installing Swirl in \"$INSTALL_DIR\"..."
 print_new_line
 
 # Create the directory if it doesn't exist
@@ -261,7 +261,7 @@ if [ $NO_GIT -eq 0 ]; then
 fi
 
 if [ $CLEAN -eq 1 ]; then
-    print_message info "Removing all traces of SWIRL..."
+    print_message info "Removing all traces of Swirl..."
     print_new_line
     run_command "clean"
 fi

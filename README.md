@@ -1,16 +1,20 @@
-# Welcome to SWIRL
+<p align="center">
+    <img src="public/logo.png" alt="Swirl" width="180" />
+</p>
 
-The SWIRL stack consists of shadcn/ui, Tailwind, Inertia, React, Laravel & and a couple of friends. The purpose of this project is to create an opinionated starter for applications that have robust fundamentals and modern capabilities.
+Swirl is a wonderful mix of shadcn/ui, Tailwind, Inertia, React, Laravel &amp; and a couple of friends. The purpose of this project is to create an opinionated starter for applications that have robust fundamentals and modern capabilities.
 
 ## Introduction
 
-### Primary Components
+Swirl brings together a set of powerful tools to help you build modern web applications with ease:
 
-- **shadcn/ui**: A collection of UI components that are designed to be highly customizable and easy to integrate into your projects.
-- **Tailwind CSS**: A utility-first CSS framework that allows you to build custom designs directly in your markup.
-- **React**: A JavaScript library for building user interfaces, particularly single-page applications where you need a fast and interactive user experience.
-- **Inertia.js**: A framework that allows you to create modern single-page applications using classic server-side routing and controllers.
-- **Laravel**: A PHP framework for web artisans, providing an elegant syntax and a robust set of tools for building modern web applications.
+- **shadcn**: Beautiful, customizable UI components that fit right into your project.
+- **Tailwind**: A utility-first CSS framework that lets you style your app quickly and flexibly.
+- **React**: A popular JavaScript library for building fast, interactive user interfaces.
+- **Inertia**: Seamlessly connects your server-side routes and controllers with a modern single-page app experience.
+- **Laravel**: A robust PHP framework that makes backend development enjoyable and productive.
+
+With these technologies, Swirl gives you a solid foundation to start building right away!
 
 ## Installation
 
@@ -22,11 +26,11 @@ sh -c "$(curl -fsSL https://swirl.mdtrr.com/install)"
 
 ### IDE
 
-SWIRL comes with recommendations for Visual Studio Code extensions as well as some useful settings that automate code formatting.
+Swirl comes with recommendations for Visual Studio Code extensions as well as some useful settings that automate code formatting.
 
 ### Linting
 
-SWIRL includes a Prettier configuration and multiple Prettier plugins for PHP, the Blade templating engine, JavaScript plugin sorting and even Tailwind CSS.
+Swirl includes a Prettier configuration and multiple Prettier plugins for PHP, the Blade templating engine, JavaScript plugin sorting and even Tailwind CSS.
 
 ## Changelog
 
