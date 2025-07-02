@@ -1,10 +1,10 @@
 {
   "recommendations": [
+    "laravel.vscode-laravel",
     "esbenp.prettier-vscode",
     "bmewburn.vscode-intelephense-client",
-    "onecentlin.laravel-blade",
     "bradlc.vscode-tailwindcss",
     "stivo.tailwind-fold",
-    "liamhammett.temphpest"
+    "csstools.postcss"
   ]
 }

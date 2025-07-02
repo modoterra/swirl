@@ -30,12 +30,13 @@ use Illuminate\Support\Facades\Route;
  */
 Route::get(
   '/',
-  static fn() => inertia('Welcome', [
+  static fn() => inertia('welcome', [
     'production' => config('app.env') === 'production'
   ])
 )->name('welcome');
 
-/**Swirl
+/**
+ * Swirl
  * If you used the CLI snippet to install Swirl, this is the route that
  * redirected you to the `install.sh` script on GitHub.
  *
@@ -43,6 +44,6 @@ Route::get(
  * `/install`, then we use a static closure, and finally, we redirect
  * to a value we retrieve from the environment variables.
  *
- * When you start developing your application, you should remve this route.
+ * When you start developing your application, you should remove this route.
  */
 Route::get('/install', static fn() => redirect(env('SWIRL_INSTALL_URL')));
