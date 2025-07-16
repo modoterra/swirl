@@ -231,6 +231,29 @@ if [ $NO_DEPS -eq 0 ]; then
     print_new_line
     run_command "cp .env.example .env"
 
+    # Prompt for application name and set database name
+    if [ $NO_INTERACTION -eq 0 ]; then
+        print_message prompt "What is your application name?"
+        print_message muted " → "
+        APP_NAME=$(prompt_string "Laravel")
+    else
+        APP_NAME="Laravel"
+    fi
+
+    # Convert app name to a database-friendly format (lowercase, replace spaces and special chars with underscores)
+    DB_NAME=$(echo "$APP_NAME" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/_/g' | sed 's/__*/_/g' | sed 's/^_\|_$//g')
+    
+    # Update APP_NAME and DB_DATABASE in .env file
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        # macOS
+        sed -i '' "s/^APP_NAME=.*/APP_NAME=\"$APP_NAME\"/" .env
+        sed -i '' "s/^DB_DATABASE=.*/DB_DATABASE=$DB_NAME/" .env
+    else
+        # Linux
+        sed -i "s/^APP_NAME=.*/APP_NAME=\"$APP_NAME\"/" .env
+        sed -i "s/^DB_DATABASE=.*/DB_DATABASE=$DB_NAME/" .env
+    fi
+
     # Install composer dependencies
     print_message info "Installing composer dependencies..."
     print_new_line

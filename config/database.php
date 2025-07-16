@@ -2,28 +2,6 @@
 
 use Illuminate\Support\Str;
 
-// Helper function to get the default database name
-if (!function_exists('getDefaultDatabaseName')) {
-    function getDefaultDatabaseName($fallback = 'laravel') {
-        if (env('DB_USE_APP_NAME', true)) {
-            $appName = env('APP_NAME', 'laravel');
-            return Str::slug($appName, '_');
-        }
-        return $fallback;
-    }
-}
-
-// Helper function to get database name with empty string handling
-if (!function_exists('getDatabaseName')) {
-    function getDatabaseName($fallback = null) {
-        $dbName = env('DB_DATABASE');
-        if ($dbName === null || $dbName === '') {
-            return $fallback ?: getDefaultDatabaseName();
-        }
-        return $dbName;
-    }
-}
-
 return [
 
     /*
@@ -69,7 +47,7 @@ return [
             'url' => env('DB_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
-            'database' => getDatabaseName(),
+            'database' => env('DB_DATABASE', 'laravel'),
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
@@ -89,7 +67,7 @@ return [
             'url' => env('DB_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
-            'database' => getDatabaseName(),
+            'database' => env('DB_DATABASE', 'laravel'),
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
@@ -109,7 +87,7 @@ return [
             'url' => env('DB_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
-            'database' => getDatabaseName(),
+            'database' => env('DB_DATABASE', 'laravel'),
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', ''),
             'charset' => env('DB_CHARSET', 'utf8'),
@@ -124,7 +102,7 @@ return [
             'url' => env('DB_URL'),
             'host' => env('DB_HOST', 'localhost'),
             'port' => env('DB_PORT', '1433'),
-            'database' => getDatabaseName(),
+            'database' => env('DB_DATABASE', 'laravel'),
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', ''),
             'charset' => env('DB_CHARSET', 'utf8'),
