@@ -250,6 +250,11 @@ if [ $NO_DEPS -eq 0 ]; then
     print_message info "Generating application key..."
     print_new_line
     run_command "php artisan key:generate"
+
+    # Run database migrations
+    print_message info "Running database migrations..."
+    print_new_line
+    run_command "php artisan migrate --force"
 fi
 
 if [ $NO_GIT -eq 0 ]; then
