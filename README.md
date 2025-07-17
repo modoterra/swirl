@@ -22,6 +22,14 @@ With these technologies, Swirl gives you a solid foundation to start building ri
 sh -c "$(curl -fsSL https://swirl.mdtrr.com/install)"
 ```
 
+During installation, the script will prompt you for your application name. This name will be automatically converted to a database-friendly format and used to set both the `APP_NAME` and `DB_DATABASE` environment variables. For example:
+
+- **"My Cool Project"** → Database name: `my_cool_project`
+- **"E-Commerce Site"** → Database name: `e_commerce_site`
+- **"Blog@2024!"** → Database name: `blog_at_2024`
+
+This ensures your database name matches your application name while maintaining compatibility with database naming conventions.
+
 ## Extra
 
 ### IDE
